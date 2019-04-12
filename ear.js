@@ -18,7 +18,7 @@ class VueEar {
      * @param {boolean|string} [$prefix]
      */
     constructor($prefix = true) {
-        if (typeof Vue === 'undefined') {
+        if (typeof window['Vue'] === 'undefined') {
             console.error('VueEar requires Vue to work!');
             return null;
         }
@@ -28,7 +28,7 @@ class VueEar {
             this.prefix = $prefix + ':';
         }
 
-        this.connection = new Vue({});
+        this.connection = new window['Vue']({});
         return this;
     }
 
