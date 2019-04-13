@@ -15,46 +15,52 @@ class VueEar {
      * VueEar Constructor
      * @constructor
      * @return {null|VueEar}
-     * @param {boolean|string} [$prefix]
+     * @param {boolean|string} [$name]
+     * @param Vue
      */
-    constructor($prefix = true) {
-        if (typeof window['Vue'] === 'undefined') {
-            console.error('VueEar requires Vue to work!');
-            return null;
-        }
-        if ($prefix === true) {
-            $prefix = randomStr(3);
-        }
-
-        if (typeof $prefix === 'string') {
-            // Store events for global access
-            VueEars[event] = this;
-            this.prefix = $prefix+':';
+    constructor($name = true, Vue = undefined) {
+        if (Vue === undefined) {
+            if (typeof window['Vue'] === 'undefined') {
+                console.error('VueEar requires Vue to work!');
+                return null;
+            } else {
+                Vue = window['Vue'];
+            }
         }
 
-        this.connection = new window['Vue']({});
+        if ($name === true) {
+            $name = randomStr(3);
+        }
+
+        if (typeof $name === 'string') {
+            // Store name for global access
+            VueEars[$name] = this;
+            this.name = $name + ':';
+        }
+
+        this.connection = new Vue({});
         return this;
     }
 
     /**
-     * Get full name of event including prefix.
+     * Get full name of event including name.
      * @param {string} event
-     * @param [$addPrefix]
+     * @param [$addName]
      */
-    withPrefix(event, $addPrefix = true) {
-        if (!$addPrefix) return event;
-        return this.prefix + event;
+    withName(event, $addName = true) {
+        if (!$addName) return event;
+        return this.name + event;
     }
 
     /**
      * Listen to events.
      * @param {string} event - Name of event to listen to.
      * @param {function} run - Function to run when event talks.
-     * @param {boolean} $addPrefix - Set false to disable adding of prefix
+     * @param {boolean} $addName - Set false to disable adding of name
      * @return {VueEar}
      */
-    listenFor(event, run, $addPrefix = true) {
-        event = this.withPrefix(event, $addPrefix);
+    listenFor(event, run, $addName = true) {
+        event = this.withName(event, $addName);
         this.connection.$on(event, run);
         return this;
     }
@@ -63,11 +69,11 @@ class VueEar {
      * Talk to events
      * @param {string} event - Name of event to talk to.
      * @param {object} data - Data to send along with your speech
-     * @param {boolean} [$addPrefix]
+     * @param {boolean} [$addName]
      * @return {VueEar}
      */
-    say(event, data = {}, $addPrefix = true) {
-        this.connection.$emit(this.withPrefix(event, $addPrefix), data);
+    say(event, data = {}, $addName = true) {
+        this.connection.$emit(this.withName(event, $addName), data);
         return this;
     }
 
@@ -88,16 +94,16 @@ class VueEar {
     /**
      * Stop Listening to events
      * @param {string} event - Name of event to stop listening to
-     * @param {boolean} [$addPrefix]
+     * @param {boolean} [$addName]
      * @return {VueEar}
      */
-    stopListeningFor(event, $addPrefix = true) {
-        this.connection.$off(this.withPrefix(event, $addPrefix));
+    stopListeningFor(event, $addName = true) {
+        this.connection.$off(this.withName(event, $addName));
         return this;
     }
 }
 
 VueEar.prototype.connection = null;
-VueEar.prototype.prefix = '';
+VueEar.prototype.name = '';
 
 export default VueEar;
