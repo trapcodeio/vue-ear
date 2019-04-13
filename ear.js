@@ -7,7 +7,7 @@ function randomStr(length) {
     return text;
 }
 
-let VueEarEvents = {};
+let VueEars = {};
 
 class VueEar {
 
@@ -23,9 +23,13 @@ class VueEar {
             return null;
         }
         if ($prefix === true) {
-            this.prefix = randomStr(3) + ':';
-        } else if (typeof $prefix === 'string') {
-            this.prefix = $prefix + ':';
+            $prefix = randomStr(3);
+        }
+
+        if (typeof $prefix === 'string') {
+            // Store events for global access
+            VueEars[event] = this;
+            this.prefix = $prefix+':';
         }
 
         this.connection = new window['Vue']({});
@@ -51,8 +55,6 @@ class VueEar {
      */
     listenFor(event, run, $addPrefix = true) {
         event = this.withPrefix(event, $addPrefix);
-        // Store events for global access
-        VueEarEvents[event] = this;
         this.connection.$on(event, run);
         return this;
     }
@@ -71,15 +73,14 @@ class VueEar {
 
     /**
      * Talk to global events
-     * @param  {string} prefix
+     * @param  {string} ear
      * @param {string} say - Name of event to talk to.
      * @param {object} data - Data to send along with your speech
      * @return {VueEar}
      */
-    talkTo(prefix, say, data = {}) {
-        let key = prefix + ':' + say;
-        if (VueEarEvents[key] instanceof VueEar) {
-            VueEarEvents[key].say(say, data);
+    talkTo(ear, say, data = {}) {
+        if (VueEars[ear] instanceof VueEar) {
+            VueEars[ear].say(say, data);
             return this;
         }
     }
