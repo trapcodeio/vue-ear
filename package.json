@@ -1,6 +1,6 @@
 {
   "name": "vue-ear",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "ear.js",
   "description": "Simple fun to use vue event bus class for generating as many event listeners as you want.",
   "repository": "https://github.com/trapcodeio/vue-ear.git",
