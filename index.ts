@@ -106,4 +106,16 @@ class VueEar {
     }
 }
 
+/**
+ * Use existing ear or create new
+ * @param ear
+ */
+export function useVueEar(ear: string) {
+    if (VueEars[ear] instanceof VueEar) {
+        return VueEars[ear];
+    } else {
+        return new VueEar(ear);
+    }
+}
+
 export default VueEar;

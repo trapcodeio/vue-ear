@@ -1,4 +1,4 @@
-import VueEar from "./dist";
+import VueEar from "./index";
 
 let userEvents = new VueEar("user");
 let sideBarEvents = new VueEar("sidebar");
