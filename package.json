@@ -1,7 +1,13 @@
 {
   "name": "vue-ear",
   "version": "0.0.4",
-  "main": "ear.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "watch": "npx tsc --watch",
+    "test": "npx ts-node-dev --respawn test.ts"
+  },
   "description": "Simple fun to use vue event bus class for generating as many event listeners as you want.",
   "repository": "https://github.com/trapcodeio/vue-ear.git",
   "author": "trapcode",
@@ -12,5 +18,14 @@
     "events",
     "bus",
     "listeners"
-  ]
+  ],
+  "dependencies": {
+    "mitt": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "prettier": "^2.2.1",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
+  }
 }

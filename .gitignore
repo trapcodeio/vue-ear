@@ -2,3 +2,4 @@ yarn.lock
 .git
 .idea
 node_modules
+dist

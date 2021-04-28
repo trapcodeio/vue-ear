@@ -23,13 +23,13 @@ import VueEar from "vue-ear";
 let userEvents = new VueEar('user');
 let sideBarEvents = new VueEar('sidebar');
 
-sideBarEvents.listenFor('hide', ()=>{
+sideBarEvents.on('hide', ()=>{
     // Hide Side Bar
 })
 
-userEvents.listenFor('logoutWasClicked', ()=>{
+userEvents.on('logoutWasClicked', ()=>{
     // Hide Side bar
-    sideBarEvents.say('hide');
+    sideBarEvents.emit('hide');
     // or talk to sidebar from anywhere in your app.
     userEvents.talkTo('sidebar', 'hide');
 })
