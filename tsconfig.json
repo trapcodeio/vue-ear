@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es2015",
-    "module": "es2015",
+    "target": "ES2015",
+    "module": "ES2020",
     "moduleResolution": "node",
-    "lib": ["dom", "es2015"],
     /* Basic Options */
     // "incremental": true,                         /* Enable incremental compilation */
      // "lib": [],                                   /* Specify library files to be included in the compilation. */

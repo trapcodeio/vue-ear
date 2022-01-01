@@ -4,5 +4,5 @@ yarn.lock
 node_modules
 dist
 
-*.d.ts
-*.js
+*.ts
+!*.d.ts
