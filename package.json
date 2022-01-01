@@ -6,6 +6,7 @@
   "module": "index.js",
   "types": "index.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "npx tsc",
     "watch": "npx tsc --watch",
     "test": "npx ts-node-dev --respawn test.ts"
