@@ -1,8 +1,8 @@
 {
   "name": "vue-ear",
   "version": "1.2.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "npx tsc",
     "watch": "npx tsc --watch",

@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es2015",
+    "module": "es2015",
     "moduleResolution": "node",
+    "lib": ["dom", "es2015"],
     /* Basic Options */
     // "incremental": true,                         /* Enable incremental compilation */
      // "lib": [],                                   /* Specify library files to be included in the compilation. */
@@ -11,10 +12,10 @@
     // "checkJs": true,                             /* Report errors in .js files. */
     // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
      "declaration": true,                         /* Generates corresponding '.d.ts' file. */
-     "declarationDir": "dist",                      /* Generates a sourcemap for each corresponding '.d.ts' file. */
+//     "declarationDir": "dist",                      /* Generates a sourcemap for each corresponding '.d.ts' file. */
      "sourceMap": false,                           /* Generates corresponding '.map' file. */
     // "outFile": "./",                             /* Concatenate and emit output to single file. */
-     "outDir": "dist",                              /* Redirect output structure to the directory. */
+     "outDir": "./",                              /* Redirect output structure to the directory. */
     // "rootDir": "./",                             /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                           /* Enable project compilation */
     // "tsBuildInfoFile": "./",                     /* Specify file to store incremental compilation information */
