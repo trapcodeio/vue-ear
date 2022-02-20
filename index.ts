@@ -12,7 +12,7 @@ const VueEars: Record<string, VueEar> = {};
 
 class VueEar {
     name: string;
-    private bus: Emitter;
+    private bus: Emitter<any>;
 
     /**
      * VueEar Constructor
