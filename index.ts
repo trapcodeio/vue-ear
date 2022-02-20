@@ -109,13 +109,22 @@ class VueEar {
 /**
  * Use existing ear or create new
  * @param ear
+ * @param $class
+ */
+export function useEar<T extends typeof VueEar>(ear: string, $class: T) {
+    if (VueEars[ear] instanceof VueEar) {
+        return VueEars[ear] as InstanceType<T>;
+    } else {
+        return new ($class ? $class : VueEar)(ear) as InstanceType<T>;
+    }
+}
+
+/**
+ * Use existing ear or create new
+ * @param ear
  */
 export function useVueEar(ear: string) {
-    if (VueEars[ear] instanceof VueEar) {
-        return VueEars[ear];
-    } else {
-        return new VueEar(ear);
-    }
+    return useEar(ear, VueEar);
 }
 
 export default VueEar;
