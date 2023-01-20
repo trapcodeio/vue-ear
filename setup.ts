@@ -1,7 +1,7 @@
 import {onBeforeUnmount, onMounted} from "vue";
 import VueEar, {useEar} from "./index";
 
-class VueEarSetup extends VueEar {
+export default class VueEarSetup extends VueEar {
     listen(event: string, fn: any) {
         onMounted(() => {
             this.on(event, fn);
